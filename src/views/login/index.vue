@@ -7,23 +7,24 @@
       <!-- 登录表单 -->
       <van-form @submit="onSubmit">
         <van-field
-          name="用户名"
+          v-model="user.mobile"
+          name="手机号"
           placeholder="请输入手机号"
         >
           <i slot="left-icon" class="toutiao toutiao-shouji"></i>
         </van-field>
         <van-field
-          type="password"
+          v-model="user.code"
           name="验证码"
           placeholder="请输入验证码"
         >
-           <i slot="left-icon" class="toutiao toutiao-yanzhengma"></i>
-           <template #button>
+          <i slot="left-icon" class="toutiao toutiao-yanzhengma"></i>
+          <template #button>
              <van-button class="send-sms-btn" round size="small" type="default">获取验证码</van-button>
-           </template>
+          </template>
         </van-field>
-        <div style="margin: 16px;">
-          <van-button block type="info" native-type="submit">登录</van-button>
+        <div class="login-btn-wrap">
+          <van-button class="login-btn" block type="info" native-type="submit">登录</van-button>
         </div>
       </van-form>
       <!-- /登录表单 -->
@@ -31,18 +32,44 @@
 </template>
 
 <script>
+import { login } from '@/api/user'
+
 export default {
   name: 'LoginPage',
   components: {},
   props: {},
   data () {
-    return {}
+    return {
+      user: {
+        mobile: '', // 手机号
+        code: '' // 验证码
+      }
+    }
   },
   computed: {},
   watch: {},
   created () {},
   mounted () {},
-  methods: {}
+  methods: {
+    async onSubmit () {
+      // 1. 获取表单数据
+      const user = this.user
+      // 2. 表单验证
+      // 3. 提交表单请求登录
+      console.log(user)
+      try {
+        const res = await login(user)
+        console.log('登录成功', res)
+      } catch (err) {
+        if (err.response.status === 400) {
+          console.log('手机号或验证码错误')
+        } else {
+          console.log('登录失败，请稍后重试', err)
+        }
+      }
+      // 4. 根据请求响应结果处理后续操作
+    }
+  }
 }
 </script>
 
@@ -52,7 +79,19 @@ export default {
     font-size: 37px;
   }
   .send-sms-btn{
+    width: 152px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 22px;
+    color: #666;
     background-color: #ededed;
+  }
+  .login-btn-wrap {
+    padding: 53px 33px;
+    .login-btn {
+      background-color: #6db4fb;
+      border: none;
+    }
   }
 }
 </style>
