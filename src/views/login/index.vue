@@ -117,8 +117,8 @@ export default {
 
       console.log(user)
       try {
-        const res = await login(user)
-        console.log('登录成功', res)
+        const { data } = await login(this.user)
+        this.$store.commit('setUser', data.data)
         this.$toast.success('登录成功')
       } catch (err) {
         if (err.response.status === 400) {
