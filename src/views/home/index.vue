@@ -20,14 +20,15 @@
         通过 swipeable 属性可以开启滑动切换标签页。
        -->
       <van-tabs class="channel-tabs" v-model="active" animated swipeable>
-        <van-tab title="推荐">推荐1</van-tab>
-        <van-tab title="热门话题">热门话题</van-tab>
-        <van-tab title="标签 3">标签 3</van-tab>
-        <van-tab title="标签 4">标签 4</van-tab>
-        <van-tab title="标签 4">标签 4</van-tab>
-        <van-tab title="标签 4">标签 4</van-tab>
-        <van-tab title="标签 4">标签 4</van-tab>
-        <van-tab title="标签 4">标签 4</van-tab>
+        <van-tab
+          :title="channel.name"
+          v-for="channel in channels"
+          :key="channel.id"
+        >
+        <!-- 文章列表 -->
+        <article-list :channel="channel"/>
+        <!-- /文章列表 -->
+        </van-tab>
         <div slot="nav-right" class="placeholder"></div>
         <div slot="nav-right" class="hamburger-btn">
           <i class="toutiao toutiao-gengduo"></i>
@@ -38,21 +39,49 @@
 </template>
 
 <script>
+import { getUserChannels } from '@/api/user'
+import ArticleList from './component/article-list'
+
 export default {
   name: 'HomeIndex',
-  component: {},
+  components: {
+    ArticleList
+  },
   props: {},
   data () {
-    return { active: 0 }
+    return {
+      active: 0,
+      channels: [
+        { id: 0, name: '推荐' },
+        { id: 1, name: '推荐1' },
+        { id: 2, name: '推荐2' },
+        { id: 3, name: '推荐3' },
+        { id: 4, name: '推荐4' },
+        { id: 5, name: '推荐5' },
+        { id: 6, name: '推荐6' }
+      ] // 频道列表
+    }
   },
-  created () {},
+  created () {
+    this.loadChannels()
+  },
   mounted () {},
-  methods: {}
+  methods: {
+    async loadChannels () {
+      try {
+        const { data } = await getUserChannels()
+        this.channels = data.data.channels
+      } catch (err) {
+        this.$toast('获取频道数据失败')
+      }
+    }
+  }
 }
 </script>
 
 <style scoped lang="less">
 .home-container {
+  padding-bottom: 100px;
   .van-nav-bar__title {
     max-width: unset;
   }

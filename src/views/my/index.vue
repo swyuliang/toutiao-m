@@ -1,7 +1,7 @@
 <template>
   <div class="my-container">
     <!-- 登录状态头部 -->
-   <div v-if="user" class="header user-info">
+    <div v-if="user" class="header user-info">
      <div class="base-info">
        <div class="left">
          <van-image
@@ -74,11 +74,11 @@ import { getUserInfo } from '@/api/user'
 
 export default {
   name: 'MyIndex',
-  component: {},
+  components: {},
   props: {},
   data () {
     return {
-      userInfo: {} // 用户信息
+      userInfo: { name: '黑马', art_count: 11, follow_count: 22, fans_count: 33, like_count: 44, photo: '' } // 用户信息
     }
   },
   computed: {

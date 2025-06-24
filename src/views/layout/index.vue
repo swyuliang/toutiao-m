@@ -30,7 +30,7 @@
 <script>
 export default {
   name: 'LayoutIndex',
-  component: {},
+  components: {},
   props: {},
   data () {
     return { active: 0 }
