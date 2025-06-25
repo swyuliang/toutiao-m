@@ -17,18 +17,27 @@
       + 所有数据加载结束， finished 为 true，此时不会触发load事件
   -->
   <div class="article-list">
-    <van-list
-      v-model="loading"
-      :finished="finished"
-      finished-text="没有更多了"
-      @load="onLoad"
+    <van-pull-refresh
+      v-model="isreFreshLoading"
+      :success-text="refreshSuccessText"
+      :success-duration="1500"
+      @refresh="onRefresh"
     >
-      <van-cell
-        v-for="(article, index) in list"
-        :key="index"
-        :title="article.title"
-      />
-    </van-list>
+      <van-list
+        v-model="loading"
+        :finished="finished"
+        finished-text="没有更多了"
+        :error.sync="error"
+        error-text="请求失败，点击重新加载"
+        @load="onLoad"
+      >
+        <van-cell
+          v-for="(article, index) in list"
+          :key="index"
+          :title="article.title"
+        />
+      </van-list>
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -49,7 +58,10 @@ export default {
       list: [], // 存储列表的数据的数组
       loading: false, // 控制加载中loading状态，
       finished: false, // 控制加载结束的状态，如加载完所以数据 finished： true，然后提示没有更多
-      timestamp: null // 请求获取下一页数据的时间戳
+      timestamp: null, // 请求获取下一页数据的时间戳
+      error: false, // 控制列表加载失败的提示状态
+      isreFreshLoading: false, // 控制下拉刷新的 loading 状态
+      refreshSuccessText: '刷新成功' // 下拉刷新成功提示文本
     }
   },
   computed: {},
@@ -68,6 +80,10 @@ export default {
           timestamp: this.timestamp || Date.now(),
           with_top: 1 // 是否包含置顶，进入页面第一次请求是要包含置顶
         })
+        // 模拟随机失败的情况
+        // if (Math.random() > 0.5) {
+        //   JSON.parse('dsnajndjsa')
+        // }
         // 2.把请求结果数据放到 list 数组中
         const { results } = data.data
         // ...数组的展开操作符，它会把数组元素一个一个拿出来
@@ -83,7 +99,35 @@ export default {
           this.finished = true
         }
       } catch (err) {
-        this.$toast('请求失败', err)
+        // 展示错误提示状态
+        this.error = true
+        // 请求失败了，loading 也需要关闭
+        this.loading = false
+      }
+    },
+    // 当下拉刷新的时候会触发调用该函数
+    async onRefresh () {
+      try {
+        // 1.请求获取数据
+        const { data } = await getArticles({
+          channel_id: this.channel_id, // 频道id
+          // timestamp 简单理解就是请求数据的页码
+          // 请求第一页数据： 当前最新的时间戳
+          // 用于请求之后数据的时间戳会在当前请求结果中返回给你
+          timestamp: Date.now(), // 下拉刷新每次请求最新数据，所以传递当前最新时间戳
+          with_top: 1 // 是否包含置顶，进入页面第一次请求是要包含置顶文章，1-包含置顶，0-不包
+        })
+        // 2.将数据追加到列表的顶部
+        const { results } = data.data
+        this.list.unshift(...results)
+        // 3.关闭下拉刷新的 loading 状态
+        this.isreFreshLoading = false
+
+        // 更新下拉刷新成功提示文本
+        this.refreshSuccessText = `刷新成功，更新了${results.length}条数据`
+      } catch (err) {
+        this.isreFreshLoading = false
+        this.refreshSuccessText = '刷新失败'
       }
     }
     // 初始化或滚动到底部的时候会触发调用 onload
