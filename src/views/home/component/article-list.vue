@@ -31,11 +31,16 @@
         error-text="请求失败，点击重新加载"
         @load="onLoad"
       >
-        <van-cell
+        <article-item
+          v-for="(article, index) in list"
+          :key="index"
+          :article="article"
+        />
+        <!-- <van-cell
           v-for="(article, index) in list"
           :key="index"
           :title="article.title"
-        />
+        /> -->
       </van-list>
     </van-pull-refresh>
   </div>
@@ -43,10 +48,13 @@
 
 <script>
 import { getArticles } from '@/api/article'
+import ArticleItem from '@/compoments/article-item'
 
 export default {
   name: 'ArticleList',
-  components: {},
+  components: {
+    ArticleItem
+  },
   props: {
     channel: {
       type: Object,
@@ -155,4 +163,10 @@ export default {
 }
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.article-list {
+  // 百分比单位是相对于父元素的
+  height: 79vh;
+  overflow-y: auto;
+}
+</style>
