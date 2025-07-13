@@ -57,7 +57,7 @@ export default {
   },
   props: {
     channel: {
-      type: Object,
+      type: Array,
       required: true
     }
   },

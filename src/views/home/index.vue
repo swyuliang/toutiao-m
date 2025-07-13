@@ -49,6 +49,8 @@
       >
         <channel-edit
           :my-channels="channels"
+          :addpropChannel="addpropChannel"
+          :deletepropChannel="deletepropChannel"
           :active="active"
           @update-active="onUpdateActive"
         />
@@ -120,12 +122,19 @@ export default {
         this.$toast('获取频道数据失败')
       }
     },
-
     onUpdateActive (index, isChannelEditshow = true) {
       // 更新激活的频道
       this.active = index
       // 关闭编辑频道弹层
       this.isChannelEditshow = isChannelEditshow
+    },
+    // prop传给子组件修改数组
+    addpropChannel (channel) {
+      this.channels.push(channel)
+    },
+    // prop传给子组件删除数组
+    deletepropChannel (index) {
+      this.channels.splice(index, 1)
     }
   }
 }

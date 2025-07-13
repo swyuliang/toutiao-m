@@ -75,6 +75,14 @@ export default {
     active: {
       type: Number,
       required: true
+    },
+    addpropChannel: {
+      type: Function,
+      required: true
+    },
+    deletepropChannel: {
+      type: Function,
+      required: true
     }
   },
   data () {
@@ -142,7 +150,8 @@ export default {
       }
     },
     async onAddChannel (channel) {
-      this.myChannels.push(channel) // eslint-disable-line
+      // this.myChannels.push(channel) // eslint-disable-line  prop数据不能直接修改
+      this.addpropChannel(channel)
       // 数据持久化处理
       if (this.user) {
         try {
@@ -166,7 +175,8 @@ export default {
           return
         }
         // 2.删除频道项
-        this.myChannels.splice(index, 1) // eslint-disable-line
+        // this.myChannels.splice(index, 1) // eslint-disable-line prop数据不能直接修改
+        this.deletepropChannel(index)
         // 3.如果删除的激活频道之前的频道，则更新激活的频道
         // 参数1：要删除的元素的索引（包括）
         // 参数2：删除的个数，如果不指定，则从参数1开始一直删除到最后

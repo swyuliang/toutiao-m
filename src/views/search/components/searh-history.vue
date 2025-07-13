@@ -1,21 +1,20 @@
 <template>
   <div class="search-history">
     <van-cell title="搜索历史">
-      <span>全部删除</span>
-      <span>完成</span>
-      <van-icon name="delete" />
+      <div v-if="isDeleteShow">
+        <span @click="PropClearAllSearchHistory">全部删除</span>
+        &nbsp;&nbsp;
+        <span @click="isDeleteShow = false">完成</span>
+      </div>
+      <van-icon v-else name="delete" @click="isDeleteShow = true"/>
     </van-cell>
-    <van-cell title="历史1">
-      <van-icon name="close" />
-    </van-cell>
-    <van-cell title="历史1">
-      <van-icon name="close" />
-    </van-cell>
-    <van-cell title="历史1">
-      <van-icon name="close" />
-    </van-cell>
-    <van-cell title="历史1">
-      <van-icon name="close" />
+    <van-cell
+    :title="item"
+    v-for="(item, index) in searchHistories"
+    :key="index"
+    @click="onSearchItemClick(item, index)"
+    >
+      <van-icon v-if="isDeleteShow" name="close" />
     </van-cell>
   </div>
 </template>
@@ -24,13 +23,41 @@
 export default {
   name: 'SearchHistory',
   components: {},
-  props: {},
+  props: {
+    // prop 数据 是受父组件数据影响的
+    // 如果是普通数据（数字，字符串，布尔值）绝对不能修改
+    // 即使改了也不会传到给父组件
+    searchHistories: {
+      type: Array,
+      required: true
+    },
+    PropDeleteSearchHistory: {
+      type: Function,
+      required: true
+    },
+    PropClearAllSearchHistory: {
+      type: Function,
+      required: true
+    }
+  },
   data () {
-    return {}
+    return {
+      isDeleteShow: false // 控制删除显示状态
+    }
   },
   created () {},
   mounted () {},
-  methods: {}
+  methods: {
+    onSearchItemClick (item, index) {
+      if (this.isDeleteShow) {
+        // 删除状态，删除历史记录数据
+        this.PropDeleteSearchHistory(index)
+      } else {
+        // 非删除状态，直接进入搜索
+        this.$emit('search', item)
+      }
+    }
+  }
 }
 </script>
 
