@@ -80,14 +80,18 @@ export default {
     async onLoad () {
       try {
         // 1.请求获取数据
-        const { data } = await getArticles({
-          channel_id: this.channel_id, // 频道id
-          // timestamp 简单理解就是请求数据的页码
-          // 请求第一页数据： 当前最新的时间戳
-          // 用于请求之后数据的时间戳会在当前请求结果中返回给你
-          timestamp: this.timestamp || Date.now(),
-          with_top: 1 // 是否包含置顶，进入页面第一次请求是要包含置顶
-        })
+        const { data } = await getArticles(
+          // *************应用mock，所以不带参数*************
+          // {
+          //   channel_id: this.channel_id, // 频道id
+          //   // timestamp 简单理解就是请求数据的页码
+          //   // 请求第一页数据： 当前最新的时间戳
+          //   // 用于请求之后数据的时间戳会在当前请求结果中返回给你
+          //   timestamp: this.timestamp || Date.now(),
+          //   with_top: 1 // 是否包含置顶，进入页面第一次请求是要包含置顶
+          // }
+        )
+        // console.log(data)
         // 模拟随机失败的情况
         // if (Math.random() > 0.5) {
         //   JSON.parse('dsnajndjsa')

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import { getItem, setItem } from '@/utils/storage'
 
 Vue.use(Vuex)
+// 引入小仓库
 
 const TOKEN_KEY = 'TOUTIAO_USER'
 
@@ -19,8 +20,8 @@ export default new Vuex.Store({
       // window.localStorage.setItem(TOKEN_KEY, JSON.stringify(state.data)
     }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  getters: {},
+  // 实现Vuex仓库模块式开发存储数据
+  modules: {}
 })

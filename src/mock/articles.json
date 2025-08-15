@@ -1,0 +1,88 @@
+{
+  "message": "数据加载成功",
+  "data": {
+    "pre_timestamp": 1723363200,
+    "results": [
+      {
+        "art_id": 10001,
+        "title": "量子计算突破：中国科学家实现100量子比特纠缠",
+        "aut_id": 201,
+        "aut_name": "科技前沿",
+        "comm_count": 342,
+        "pubdate": "2025-08-10 09:15:00",
+        "is_top": 1,
+        "cover": {
+          "type": 1,
+          "images": ["https://picsum.photos/800/400?quantum"]
+        },
+        "trace": {
+          "click": "article_10001_click",
+          "collect": "article_10001_collect",
+          "share": "article_10001_share",
+          "read": "article_10001_read"
+        }
+      },
+      {
+        "art_id": 10002,
+        "title": "2025全球人工智能大会亮点回顾",
+        "aut_id": 202,
+        "aut_name": "AI观察员",
+        "comm_count": 156,
+        "pubdate": "2025-08-09 14:30:00",
+        "is_top": 0,
+        "cover": {
+          "type": 3,
+          "images": [
+            "https://picsum.photos/300/200?ai1",
+            "https://picsum.photos/300/200?ai2",
+            "https://picsum.photos/300/200?ai3"
+          ]
+        },
+        "trace": {
+          "click": "article_10002_click",
+          "collect": "article_10002_collect",
+          "share": "article_10002_share",
+          "read": "article_10002_read"
+        }
+      },
+      {
+        "art_id": 10003,
+        "title": "新能源汽车电池技术新突破",
+        "aut_id": 203,
+        "aut_name": "汽车周刊",
+        "comm_count": 89,
+        "pubdate": "2025-08-08 11:20:00",
+        "is_top": 1,
+        "cover": {
+          "type": 0,
+          "images": []
+        },
+        "trace": {
+          "click": "article_10003_click",
+          "collect": "article_10003_collect",
+          "share": "article_10003_share",
+          "read": "article_10003_read"
+        }
+      },
+      {
+        "art_id": 10030,
+        "title": "太空旅游商业化进程加速",
+        "aut_id": 230,
+        "aut_name": "星际探索",
+        "comm_count": 278,
+        "pubdate": "2025-07-30 16:45:00",
+        "is_top": 1,
+        "cover": {
+          "type": 1,
+          "images": ["https://picsum.photos/800/400?space"]
+        },
+        "trace": {
+          "click": "article_10030_click",
+          "collect": "article_10030_collect",
+          "share": "article_10030_share",
+          "read": "article_10030_read"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "message": "OK",
+  "data": {
+    "art_id": 10003,
+    "title": "新能源汽车电池技术新突破",
+    "pubdate": "2025-08-08 11:20:00",
+    "aut_id": 203,
+    "aut_name": "汽车周刊",
+    "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+    "is_followed": false,
+    "attitude": -1,
+    "content": "新能源汽车电池技术迎来革新性进展，新一代固态电池实现能量密度提升50%和充电时间缩短至10分钟，大幅延长车辆续航里程。该技术通过纳米材料优化电极结构，解决了高温环境下的稳定性问题，预计2026年投入量产。 行业专家指出，这一突破将加速电动汽车普及，并为可再生能源存储系统提供新解决方案。",
+    "is_collected": false,
+    "recomments": [
+      {
+        "art_id": 10002,
+        "title": "2025全球人工智能大会亮点回顾",
+        "tracking": "article_10002_click",
+        "is_collected": false
+      },
+      {
+        "art_id": 10030,
+        "title": "太空旅游商业化进程加速",
+        "tracking": "article_10030_click",
+        "is_collected": false
+      }
+    ]
+  }
+}

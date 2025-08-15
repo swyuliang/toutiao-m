@@ -3,6 +3,7 @@
  */
 
 import request from '@/utils/request'
+import mockRequests from '@/utils/mockAjax'
 // import store from '@/store'
 
 export const login = data => {
@@ -44,9 +45,33 @@ export const getUserInfo = () => {
 /****
 * 获取用户频道列表
 */
+// export const getUserChannels = () => {
+//   return request({
+//     method: 'GET',
+//     url: '/app/v1_0/user/channels'
+//   })
+// }
 export const getUserChannels = () => {
-  return request({
+  return mockRequests({
     method: 'GET',
-    url: '/app/v1_0/user/channels'
+    url: '/mychannels'
+  })
+}
+// 关注用户
+export const addFollow = userId => {
+  return mockRequests({
+    method: 'POST',
+    url: '/following',
+    data: {
+      target: userId
+    }
+  })
+}
+
+// 取消关注用户
+export const deleteFollow = userId => {
+  return mockRequests({
+    method: 'DELETE',
+    url: `/deletefollowing/${userId}`
   })
 }

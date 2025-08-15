@@ -77,13 +77,13 @@ export default {
     return {
       active: 0,
       channels: [
-        { id: 0, name: '推荐' },
-        { id: 1, name: '推荐1' },
-        { id: 2, name: '推荐2' },
-        { id: 3, name: '推荐3' },
-        { id: 4, name: '推荐4' },
-        { id: 5, name: '推荐5' },
-        { id: 6, name: '推荐6' }
+        // { id: 0, name: '推荐' },
+        // { id: 1, name: '推荐1' },
+        // { id: 2, name: '推荐2' },
+        // { id: 3, name: '推荐3' },
+        // { id: 4, name: '推荐4' },
+        // { id: 5, name: '推荐5' },
+        // { id: 6, name: '推荐6' }
       ], // 频道列表
       isChannelEditshow: false // 控制编辑频道弹出层的显示状态
     }
@@ -98,8 +98,9 @@ export default {
   methods: {
     async loadChannels () {
       try {
-        // const { data } = await getUserChannels()
-        // this.channels = data.data.channels
+        const { data } = await getUserChannels()
+        // console.log('channels:', data.data)
+        this.channels = data.data.channels
         let channels = []
         // 已登录，请求获取用户频道列表
         if (this.user) {

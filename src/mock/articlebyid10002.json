@@ -1,0 +1,29 @@
+{
+  "message": "OK",
+  "data": {
+    "art_id": 10002,
+    "title": "2025全球人工智能大会亮点回顾",
+    "pubdate": "2025-08-09 14:30:00",
+    "aut_id": 202,
+    "aut_name": "AI观察员",
+    "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+    "is_followed": false,
+    "attitude": -1,
+    "content": "百度AI DAY于8月12日在北京举办，聚焦电商、游戏、可穿戴设备等创新赛道，全面展现AI赋能方案。百度智能云重磅发起“AI创投加速计划”，联合投资机构和政府为入选企业提供亿级算力补贴（基于百舸·AI异构计算平台，成本较自建降低60%）、专属融资通道及政策申报支持；过去一年已助力20家企业完成亿元级融资。该计划通过昆仑芯算力底座、千帆大模型平台等技术工具，解决AI创业企业在技术深度、迭代速度与成本控制上的“不可能三角”难题。",
+    "is_collected": false,
+    "recomments": [
+      {
+        "art_id": 10001,
+        "title": "量子计算突破：中国科学家实现100量子比特纠缠",
+        "tracking": "article_10001_click",
+        "is_collected": false
+      },
+      {
+        "art_id": 10003,
+        "title": "新能源汽车电池技术新突破",
+        "tracking": "article_10003_click",
+        "is_collected": false
+      }
+    ]
+  }
+}

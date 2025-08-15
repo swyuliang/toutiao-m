@@ -1,10 +1,10 @@
 <template>
     <div class="login-container">
       <!-- 导航栏 -->
-      <van-nav-bar class="page-nav-bar" title="登录" >
+      <van-nav-bar class="page-nav-bar" title="登录">
         <van-icon
           slot="left"
-          name="cross"
+          name="arrow-left"
           @click="$router.back()"
           />
       </van-nav-bar>
@@ -70,7 +70,6 @@
 
 <script>
 import { login, sendSms } from '@/api/user'
-
 export default {
   name: 'LoginPage',
   components: {},

@@ -1,6 +1,17 @@
 <template>
+  <!--
+  :to="'/article/' + article.art_id" //  拼字符串写法
+  :to="`/article/${article.art_id}`" //  ES6模板语法
+  -->
   <van-cell
     class="article-item"
+      :to="{
+      // 对象写法
+      name:'article',
+      params:{
+        articleId:article.art_id
+      }
+    }"
   >
     <div slot="title" class="title van-multi-ellipsis--12">{{ article.title }}</div>
     <div slot="label">

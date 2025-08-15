@@ -1,0 +1,29 @@
+{
+  "message": "OK",
+  "data": {
+    "art_id": 10030,
+    "title": "太空旅游商业化进程加速",
+    "pubdate": "2025-07-30 16:45:00",
+    "aut_id": 230,
+    "aut_name": "星际探索",
+    "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+    "is_followed": false,
+    "attitude": -1,
+    "content": "太空旅游商业化进程显著加速，多家私营企业推出亚轨道飞行服务，单次票价降至50万美元以下，预计2026年实现月度常态化航班。关键技术突破包括可重复使用火箭和生命支持系统优化，降低运营成本30%。 行业分析认为，这一进展将推动太空科研和资源开发，吸引全球资本涌入。",
+    "is_collected": false,
+    "recomments": [
+      {
+        "art_id": 10001,
+        "title": "量子计算突破：中国科学家实现100量子比特纠缠",
+        "tracking": "article_10001_click",
+        "is_collected": false
+      },
+      {
+        "art_id": 10003,
+        "title": "新能源汽车电池技术新突破",
+        "tracking": "article_10003_click",
+        "is_collected": false
+      }
+    ]
+  }
+}
