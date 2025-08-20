@@ -9,33 +9,38 @@
       />
     </van-nav-bar>
     <!-- /导航栏 -->
-    <!-- 标题 -->
-    <h1 class="title">{{ article.title }}</h1>
-    <!-- /标题 -->
-    <van-cell center class="user-info">
-      <div slot="title" class="name">{{ article.aut_name }}</div>
-      <van-image
-        slot="icon"
-        fit="cover"
-        round
-        class="avatar"
-        :src="article.aut_photo" />
-        <div slot="label" class="pubdate">{{ article.pubdate | relativeTime}}</div>
-        <van-button
-        round
-        size="small"
-        :type="article.is_followed ?
-        'default' : 'info'"
-        :icon="article.is_followed ? '' : 'plus'"
-        class="follow-btn"
-        :loading ="isFollowLoading"
-        @click="onFollow"
-        >{{ article.is_followed ? '已关注' : '关注'}}</van-button>
-    </van-cell>
-    <!-- 文章正文 -->
-     <div class="markdown-body" v-html="article.content" ref="article-content">
-     </div>
-    <!-- /文章正文 -->
+    <div class="article-wrap">
+      <!-- 标题 -->
+      <h1 class="title">{{ article.title }}</h1>
+      <!-- /标题 -->
+      <van-cell center class="user-info">
+        <div slot="title" class="name">{{ article.aut_name }}</div>
+        <van-image
+          slot="icon"
+          fit="cover"
+          round
+          class="avatar"
+          :src="article.aut_photo" />
+          <div slot="label" class="pubdate">{{ article.pubdate | relativeTime}}</div>
+          <van-button
+          round
+          size="small"
+          :type="article.is_followed ?
+          'default' : 'info'"
+          :icon="article.is_followed ? '' : 'plus'"
+          class="follow-btn"
+          :loading ="isFollowLoading"
+          @click="onFollow"
+          >{{ article.is_followed ? '已关注' : '关注'}}</van-button>
+      </van-cell>
+      <!-- 文章正文 -->
+       <div class="markdown-body" v-html="article.content" ref="article-content">
+       </div>
+      <!-- /文章正文 -->
+      <!-- 文章评论列表 -->
+      <CommentList :source="articleId"></CommentList>
+      <!-- /文章评论列表 -->
+    </div>
     <!-- 底部区域 -->
     <div class="article-bottom">
       <van-button
@@ -76,9 +81,12 @@ import { getArticleById, addCollect, deleteCollect, addLike, deleteLike } from '
 import './github-markdown.css'
 import { ImagePreview } from 'vant'
 import { addFollow, deleteFollow } from '@/api/user'
+import CommentList from './components/comment-list'
 export default {
   name: 'ArticleIndex',
-  components: {},
+  components: {
+    CommentList
+  },
   props: ['articleId'],
   data () {
     return {
@@ -187,6 +195,14 @@ export default {
 </script>
 
 <style scoped lang="less">
+.article-wrap{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 92px;
+  bottom: 88px;
+  overflow-y: auto;
+}
 .title{
   font-size: 40px;
   color: #3a3a3a;

@@ -9,6 +9,7 @@ import articlebyid10001 from './articlebyid10001'
 import articlebyid10002 from './articlebyid10002'
 import articlebyid10003 from './articlebyid10003'
 import articlebyid10030 from './articlebyid10030'
+import comments from './comments'
 // mock数据：第一个参数请求地址 ，第二个参数：请求数据
 Mock.mock('/mock/channels', { code: 200, data: channels })
 Mock.mock('/mock/mychannels', { code: 200, data: mychannels })
@@ -44,3 +45,10 @@ Mock.mock('/mock/likings', 'post', function (target) {
 })
 Mock.mock('/mock/deletecollections/10001', { code: 200, data: null })
 Mock.mock('/mock/deletelikings/10001', { code: 200, data: null })
+Mock.mock('/mock/comments?type=a&source=10001&limit=5', { code: 200, data: comments, message: 'success' })
+Mock.mock('/mock/addcommentlike', { code: 200, data: null, message: 'success' })
+Mock.mock('/mock/deletecommentlike/10000', { code: 200, data: null, message: 'success' })
+Mock.mock('/mock/deletecommentlike/10001', { code: 200, data: null, message: 'success' })
+Mock.mock('/mock/deletecommentlike/10002', { code: 200, data: null, message: 'success' })
+Mock.mock('/mock/deletecommentlike/10003', { code: 200, data: null, message: 'success' })
+Mock.mock('/mock/deletecommentlike/10004', { code: 200, data: null, message: 'success' })

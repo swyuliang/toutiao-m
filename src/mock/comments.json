@@ -1,0 +1,130 @@
+{
+  "message": "success",
+  "data": {
+    "total_count": 10,
+    "end_id": null,
+    "last_id": null,
+    "results": [
+      {
+        "com_id": 10000,
+        "aut_id": 20001,
+        "aut_name": "科技观察者",
+        "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+        "like_count": 342,
+        "reply_count": 28,
+        "pubdate": "2025-08-17T09:15:33",
+        "content": "百度视觉大模型在工业质检场景的应用确实颠覆了传统模式",
+        "is_top": 1,
+        "is_liking": true
+      },
+      {
+        "com_id": 10001,
+        "aut_id": 20002,
+        "aut_name": "AI研究员",
+        "aut_photo": "http://mui.ucmed.cn/images/logo/logo1.png",
+        "like_count": 215,
+        "reply_count": 15,
+        "pubdate": "2025-08-17T11:42:07",
+        "content": "期待文心大模型4.5的跨模态生成能力能有突破",
+        "is_top": 0,
+        "is_liking": false
+      },
+      {
+        "com_id": 10002,
+        "aut_id": 20003,
+        "aut_name": "数字化转型",
+        "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+        "like_count": 178,
+        "reply_count": 9,
+        "pubdate": "2025-08-17T14:23:19",
+        "content": "和中石化的合作案例能否开放详细技术白皮书？",
+        "is_top": 0,
+        "is_liking": true
+      },
+      {
+        "com_id": 10003,
+        "aut_id": 20004,
+        "aut_name": "开发者小王",
+        "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+        "like_count": 93,
+        "reply_count": 6,
+        "pubdate": "2025-08-17T16:05:42",
+        "content": "千帆平台的API文档需要更详细的错误代码说明",
+        "is_top": 0,
+        "is_liking": false
+      },
+      {
+        "com_id": 10004,
+        "aut_id": 20005,
+        "aut_name": "新能源观察",
+        "aut_photo": "http://mui.ucmed.cn/images/logo/logo1.png",
+        "like_count": 267,
+        "reply_count": 21,
+        "pubdate": "2025-08-18T08:12:55",
+        "content": "风电场的智能巡检方案实际落地效果如何？求实测数据",
+        "is_top": 0,
+        "is_liking": true
+      },
+      {
+        "com_id": 10005,
+        "aut_id": 20006,
+        "aut_name": "安全工程师",
+        "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+        "like_count": 154,
+        "reply_count": 12,
+        "pubdate": "2025-08-18T10:37:28",
+        "content": "内容安全治理的算法能否识别新型变体网络暴力？",
+        "is_top": 0,
+        "is_liking": false
+      },
+      {
+        "com_id": 10006,
+        "aut_id": 20007,
+        "aut_name": "在校大学生",
+        "aut_photo": "https://img.yzcdn.cn/vant/t-thirt.jpg",
+        "like_count": 82,
+        "reply_count": 3,
+        "pubdate": "2025-08-18T12:08:14",
+        "content": "实习岗位对非计算机专业学生开放哪些方向的申请？",
+        "is_top": 0,
+        "is_liking": true
+      },
+      {
+        "com_id": 10007,
+        "aut_id": 20008,
+        "aut_name": "产品经理老张",
+        "aut_photo": "https://img.yzcdn.cn/vant/t-thirt.jpg",
+        "like_count": 196,
+        "reply_count": 17,
+        "pubdate": "2025-08-18T13:45:36",
+        "content": "超级智能双行框的语义理解准确率比传统搜索提升多少？",
+        "is_top": 0,
+        "is_liking": false
+      },
+      {
+        "com_id": 10008,
+        "aut_id": 20009,
+        "aut_name": "投资人Linda",
+        "aut_photo": "https://example.com/avatar/invest09.jpg",
+        "like_count": 305,
+        "reply_count": 24,
+        "pubdate": "2025-08-18T15:22:01",
+        "content": "智能云业务线的营收增长率是否能持续保持？",
+        "is_top": 1,
+        "is_liking": true
+      },
+      {
+        "com_id": 10009,
+        "aut_id": 20010,
+        "aut_name": "硬件极客",
+        "aut_photo": "https://example.com/avatar/hardware10.jpg",
+        "like_count": 127,
+        "reply_count": 8,
+        "pubdate": "2025-08-18T16:53:47",
+        "content": "昆仑芯片的算力功耗比在业内处于什么水平？",
+        "is_top": 0,
+        "is_liking": false
+      }
+    ]
+  }
+}
