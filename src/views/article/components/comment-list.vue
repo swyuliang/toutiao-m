@@ -8,7 +8,13 @@
       @load="onLoad"
     >
     <!-- <van-cell v-for="(comment,index) in list" :key="index" :title="comment.content"/> -->
-    <comment-item v-for="(comment,index) in list" :key="index" :comment="comment" :index="index" :changeCommentLike="changeCommentLike"/>
+    <comment-item
+      v-for="(comment,index) in list"
+      :key="index" :comment="comment"
+      :index="index"
+      :changeCommentLike="changeCommentLike"
+      @reply-click="$emit('reply-click', $event)"
+    />
     </van-list>
   </div>
 </template>
@@ -21,7 +27,7 @@ export default {
   components: {
     CommentItem
   },
-  props: ['source'],
+  props: ['source', 'type'],
   data () {
     return {
       list: [],
@@ -53,15 +59,17 @@ export default {
       // 异步更新数据
       // 1. 请求获取数据
       const { data } = await getComments({
-        type: 'a', // 评论类型，a-对文章(article)的评论，c-对评论(comment)的回复
+        type: this.type, // 评论类型，a-对文章(article)的评论，c-对评论(comment)的回复
         source: this.source, // 源id，文章id或评论id
         offset: this.offset, // 获取评论数据的偏移量，值为评论id，表示从此id的数据向后取，不传表示从第一页开始读取数据
         limit: this.limit// 获取的评论数据个数，不传表示采用后端服务设定的默认每页数据量
       })
-      console.log(data)
+      // console.log(data)
+      this.$emit('update-total-count', data.data.total_count)
       // 2. 把数据放到列表中
       const { results } = data.data
       this.list.push(...results)
+      this.$emit('getlist', this.list)
       // 3. 将本次的 loading 关闭
       this.loading = false
       // 4. 判断是否还有数据

@@ -1,0 +1,19 @@
+{
+  "message": "ok",
+  "data": {
+    "com_id": 10000,
+    "target": 10000,
+    "art_id": 20001,
+    "new_obj" : {
+        "aut_id" : 10050,
+        "aut_name" : "黑马头条号",
+        "aut_photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+        "com_id" : 10059,
+        "content": "哈哈",
+        "is_top" : 0,
+        "like_count" : 0,
+        "pubdata" : "2025-08-21T11:33:08",
+        "reply_count":0
+    }
+  }
+}

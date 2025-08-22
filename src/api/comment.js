@@ -29,3 +29,12 @@ export const deleteCommentLike = commentId => {
     url: `/deletecommentlike/${commentId}`
   })
 }
+
+// 添加评论或评论回复
+export const addComment = data => {
+  return mockRequests({
+    method: 'POST',
+    url: '/addcomment',
+    data
+  })
+}

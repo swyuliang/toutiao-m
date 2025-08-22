@@ -38,7 +38,13 @@
        </div>
       <!-- /文章正文 -->
       <!-- 文章评论列表 -->
-      <CommentList :source="articleId"></CommentList>
+      <CommentList
+        :source="articleId"
+        :type="'a'"
+        @getlist="comlist = $event"
+        @update-total-count="totalCommentCount = $event"
+        @reply-click="onReplyClick"
+      ></CommentList>
       <!-- /文章评论列表 -->
     </div>
     <!-- 底部区域 -->
@@ -48,10 +54,11 @@
         type="default"
         round
         size="small"
+        @click="showPopup"
       >写评论</van-button>
       <van-icon
         name="comment-o"
-        info="123"
+        :info="totalCommentCount"
         color="#777"
       ></van-icon>
       <van-icon
@@ -70,6 +77,30 @@
       ></van-icon>
     </div>
     <!-- /底部区域 -->
+    <!-- 发布评论 -->
+    <van-popup
+      v-model="isPostShow"
+      position="bottom"
+    >
+      <PostComment
+        :target="articleId"
+        @post-success="onPostSuccess"
+      ></PostComment>
+    </van-popup>
+    <!-- /发布评论 -->
+    <!-- 评论回复 -->
+     <van-popup
+      v-model="isReplyShow"
+      position="bottom"
+    >
+      <!-- 这里使用 v-if 的目的是让组件随着弹出层的显示进行渲染和销毁，
+           防止加载过的组件不重新渲染导致数据不会重新加载的问题 -->
+      <CommentReply
+        v-if="isReplyShow"
+        :replyComment="replyComment"
+        @closeReply="isReplyShow=false"></CommentReply>
+    </van-popup>
+    <!-- /评论回复 -->
   </div>
 </template>
 
@@ -82,14 +113,23 @@ import './github-markdown.css'
 import { ImagePreview } from 'vant'
 import { addFollow, deleteFollow } from '@/api/user'
 import CommentList from './components/comment-list'
+import PostComment from './components/post-comment'
+import CommentReply from './components/comment-reply'
 export default {
   name: 'ArticleIndex',
   components: {
-    CommentList
+    CommentList,
+    PostComment,
+    CommentReply
   },
   props: ['articleId'],
   data () {
     return {
+      replyComment: {}, // 当前回复评论对象
+      totalCommentCount: 0, // 评论总数据量
+      comlist: [], // 存储子组件commentlist评论列表数据
+      isPostShow: false, // 控制发布评论显示状态
+      isReplyShow: false, // 控制回复显示状态
       article: {}, // 文章数据
       isFollowLoading: false // 关注用户按钮的loading状态
       // isCollectLoading: false // 收藏文章的loading张贴
@@ -98,8 +138,30 @@ export default {
   created () {
     this.loadArticle()
   },
-  mounted () {},
+  mounted () {
+    // this.getlist()
+  },
   methods: {
+    onReplyClick (comment) {
+      // console.log('onReplyClick', comment)
+      this.replyComment = comment
+      console.log('replyComment', this.replyComment)
+      // 展示回复内容
+      this.isReplyShow = true
+    },
+    onPostSuccess (data) {
+      // 把发布成功的评论列表顶部，
+      // this.xx.unshift(data)
+      this.comlist.unshift(data)
+      // 更新评论总数
+      this.totalCommentCount++
+      // 关闭发布评论弹出层
+      this.isPostShow = false
+    },
+
+    showPopup () {
+      this.isPostShow = true
+    },
     async onCollect () {
       // this.isCollectLoading = true
       this.$toast.loading({
