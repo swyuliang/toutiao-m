@@ -75,3 +75,20 @@ export const deleteFollow = userId => {
     url: `/deletefollowing/${userId}`
   })
 }
+
+// 获取用户个人资料
+export const getUserProfile = () => {
+  return mockRequests({
+    method: 'GET',
+    url: '/userprofile'
+  })
+}
+
+// 编辑用户个人资料
+export const updateUserProfile = data => {
+  return mockRequests({
+    method: 'PATCH',
+    url: '/updateuserprofile',
+    data
+  })
+}

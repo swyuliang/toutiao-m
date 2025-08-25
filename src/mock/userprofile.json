@@ -1,0 +1,11 @@
+{
+  "message": "操作成功",
+  "data": {
+    "id": 10001,
+    "name": "张三",
+    "photo": "https://img.yzcdn.cn/vant/cat.jpeg",
+    "mobile": "13800138000",
+    "gender": 0,
+    "birthday": "1990-05-15"
+  }
+}
