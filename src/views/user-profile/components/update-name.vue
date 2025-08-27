@@ -45,7 +45,8 @@ export default {
     //   console.log('完成')
       this.$toast.loading({
         message: '保存中',
-        forbidClick: true // 禁止背景点击
+        forbidClick: true, // 禁止背景点击
+        duration: 0 // 展示时间
       })
       try {
         // 请求提交更新用户昵称

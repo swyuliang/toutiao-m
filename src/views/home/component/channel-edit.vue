@@ -88,20 +88,20 @@ export default {
   data () {
     return {
       allChannels: [
-        { id: 0, name: '推荐' },
-        { id: 1, name: '推荐1' },
-        { id: 2, name: '推荐2' },
-        { id: 3, name: '推荐3' },
-        { id: 4, name: '推荐4' },
-        { id: 5, name: '推荐5' },
-        { id: 6, name: '推荐6' },
-        { id: 10, name: '推荐10' },
-        { id: 11, name: '推荐11' },
-        { id: 12, name: '推荐12' },
-        { id: 13, name: '推荐13' },
-        { id: 14, name: '推荐14' },
-        { id: 15, name: '推荐15' },
-        { id: 16, name: '推荐16' }
+        // { id: 0, name: '推荐' },
+        // { id: 1, name: '推荐1' },
+        // { id: 2, name: '推荐2' },
+        // { id: 3, name: '推荐3' },
+        // { id: 4, name: '推荐4' },
+        // { id: 5, name: '推荐5' },
+        // { id: 6, name: '推荐6' },
+        // { id: 10, name: '推荐10' },
+        // { id: 11, name: '推荐11' },
+        // { id: 12, name: '推荐12' },
+        // { id: 13, name: '推荐13' },
+        // { id: 14, name: '推荐14' },
+        // { id: 15, name: '推荐15' },
+        // { id: 16, name: '推荐16' }
       ], // 所有频道
       isEdit: false, // 控制编辑状态的显示
       fiexdChannels: [0] // 固定频道不允许被删除

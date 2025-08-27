@@ -49,6 +49,11 @@ const routes = [
     component: () => import('@/views/search')
   },
   {
+    path: '/user/chat',
+    name: 'user-chat',
+    component: () => import('@/views/user-chat')
+  },
+  {
     path: '/article/:articleId?',
     name: 'article',
     component: () => import('@/views/article'),

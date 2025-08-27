@@ -98,7 +98,9 @@
       <CommentReply
         v-if="isReplyShow"
         :replyComment="replyComment"
-        @closeReply="isReplyShow=false"></CommentReply>
+        @closeReply="isReplyShow=false"
+        :articleId="articleId"
+      ></CommentReply>
     </van-popup>
     <!-- /评论回复 -->
   </div>

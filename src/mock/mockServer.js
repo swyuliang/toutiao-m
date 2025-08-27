@@ -58,3 +58,4 @@ Mock.mock('/mock/deletecommentlike/10004', { code: 200, data: null, message: 'su
 Mock.mock('/mock/addcomment', { code: 200, data: addcomment, message: 'success' })
 Mock.mock('/mock/userprofile', { code: 200, data: userprofile, message: 'success' })
 Mock.mock('/mock/updateuserprofile', { code: 200, data: null, message: 'success' })
+Mock.mock('/mock/updateuserphoto', { code: 200, data: null, message: 'success' })

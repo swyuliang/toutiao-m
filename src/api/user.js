@@ -92,3 +92,12 @@ export const updateUserProfile = data => {
     data
   })
 }
+
+// 编辑用户照片资料
+export const updateUserPhoto = data => {
+  return mockRequests({
+    method: 'PATCH',
+    url: '/updateuserphoto',
+    data
+  })
+}
