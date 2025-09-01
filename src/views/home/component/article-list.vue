@@ -16,7 +16,7 @@
       + 在每次请求完毕后，需要手动将 loading 设置为 false，表示本次加载结束
       + 所有数据加载结束， finished 为 true，此时不会触发load事件
   -->
-  <div class="article-list">
+  <div class="article-list" ref="article-list">
     <van-pull-refresh
       v-model="isreFreshLoading"
       :success-text="refreshSuccessText"
@@ -49,7 +49,7 @@
 <script>
 import { getArticles } from '@/api/article'
 import ArticleItem from '@/compoments/article-item'
-
+import { debounce } from 'lodash'
 export default {
   name: 'ArticleList',
   components: {
@@ -69,13 +69,20 @@ export default {
       timestamp: null, // 请求获取下一页数据的时间戳
       error: false, // 控制列表加载失败的提示状态
       isreFreshLoading: false, // 控制下拉刷新的 loading 状态
-      refreshSuccessText: '刷新成功' // 下拉刷新成功提示文本
+      refreshSuccessText: '刷新成功', // 下拉刷新成功提示文本
+      scrollTop: 0 // 列表滚动到顶部的距离
     }
   },
   computed: {},
   watch: {},
   created () {},
-  mounted () {},
+  mounted () {
+    const articleList = this.$refs['article-list']
+    articleList.onscroll = debounce(() => {
+      console.log(articleList.scrollTop)
+      this.scrollTop = articleList.scrollTop
+    }, 50)
+  },
   methods: {
     async onLoad () {
       try {
@@ -163,6 +170,10 @@ export default {
     //     }
     //   }, 1000)
     // }
+  },
+  activated () {
+    // 把记录到顶部的距离设置给list
+    this.$refs['article-list'].scrollTop = this.scrollTop
   }
 }
 </script>

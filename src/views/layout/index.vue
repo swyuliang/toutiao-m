@@ -1,7 +1,9 @@
 <template>
   <div class="layout-container">
     <!-- 子路由出口 -->
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
     <!-- /子路由出口 -->
     <!-- 标签导航栏 -->
      <!-- route: 此标签开启路由模式 -->
@@ -36,7 +38,9 @@ export default {
     return { active: 0 }
   },
   created () {},
-  mounted () {},
+  mounted () {
+    this.$store.commit('addCachePage', 'LayoutIndex')
+  },
   methods: {}
 }
 </script>
